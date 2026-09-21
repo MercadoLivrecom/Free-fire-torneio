@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição Confirmada - LIGA FIRE</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container { max-width: 600px; width: 100%; text-align: center; }
+
+        .success-header {
+            background: linear-gradient(135deg, #2a1f00 0%, #3d2e00 100%);
+            border: 2px solid #ffd700;
+            border-radius: 12px;
+            padding: 30px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.1);
+        }
+
+        .success-icon { font-size: 3.5rem; margin-bottom: 15px; display: block; }
+        .success-header h1 { color: #ffd700; font-size: 1.8rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .success-header p { color: #e0e0e0; font-size: 1rem; line-height: 1.5; }
+
+        .info-box {
+            background-color: #252525;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid #ffd700;
+            text-align: left;
+        }
+
+        .info-box h3 { color: #ffd700; font-size: 1.1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .info-box p { color: #b0b0b0; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; }
+        .info-box p:last-child { margin-bottom: 0; }
+        .info-box strong { color: #ffffff; }
+
+        .btn-whatsapp {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; background-color: #25d366; color: #ffffff;
+            text-decoration: none; padding: 16px; border-radius: 8px;
+            font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease;
+            margin-bottom: 30px; border: 1px solid #1da851;
+        }
+        .btn-whatsapp:hover { background-color: #1ebc57; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3); }
+        .btn-whatsapp svg { width: 24px; height: 24px; fill: #ffffff; }
+
+        .players-section { background-color: #252525; border-radius: 12px; padding: 25px; border: 1px solid #333; }
+        .players-title { color: #ffd700; font-size: 1.3rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; }
+
+        .player-list { list-style: none; text-align: left; max-height: 400px; overflow-y: auto; padding-right: 5px; }
+        .player-list::-webkit-scrollbar { width: 6px; }
+        .player-list::-webkit-scrollbar-track { background: #1a1a1a; border-radius: 3px; }
+        .player-list::-webkit-scrollbar-thumb { background: #ffd700; border-radius: 3px; }
+
+        .player-item {
+            display: flex; align-items: center; padding: 12px 15px;
+            background-color: #1a1a1a; border-radius: 6px; margin-bottom: 8px;
+            border-left: 3px solid #444; transition: all 0.3s ease;
+        }
+        .player-item:hover { background-color: #222; }
+
+        .player-item.current-user {
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 215, 0, 0.05) 100%);
+            border-left: 4px solid #ffd700;
+            border: 1px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+            transform: scale(1.02);
+        }
+
+        .player-number {
+            background-color: #333; color: #888; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.9rem; margin-right: 15px; flex-shrink: 0;
+        }
+        .player-item.current-user .player-number { background-color: #ffd700; color: #000; }
+
+        .player-name { font-weight: 600; color: #e0e0e0; font-size: 1rem; }
+        .player-item.current-user .player-name { color: #ffd700; font-weight: 800; }
+
+        .current-user-badge {
+            margin-left: auto; background-color: #ffd700; color: #000;
+            font-size: 0.7rem; font-weight: 800; padding: 4px 8px;
+            border-radius: 4px; text-transform: uppercase;
+        }
+
+        .loading-list { color: #888; padding: 30px; text-align: center; font-style: italic; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; color: #666; font-size: 0.85rem; }
+
+        @media (max-width: 600px) {
+            .success-header h1 { font-size: 1.5rem; }
+            .btn-whatsapp { font-size: 1rem; padding: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="success-header">
+            <span class="success-icon">🏆</span>
+            <h1>Parabéns!</h1>
+            <p>Você adquiriu acesso à sala com sucesso.<br>Veja os dados da sua posição abaixo.</p>
+        </div>
+
+        <div class="info-box">
+            <h3> Sobre o Campeonato</h3>
+            <p>A data e o horário exatos do campeonato serão anunciados no grupo oficial assim que a sala atingir o número máximo de <strong>48 membros</strong>.</p>
+            
+            <h3 style="margin-top: 20px;">📲 Próximo Passo Obrigatório</h3>
+            <p>Para ser adicionado ao grupo principal do campeonato, clique no botão abaixo e envie para o administrador:</p>
+            <p>1. O <strong>comprovante de pagamento</strong>.<br>
+               2. Um <strong>print (captura de tela)</strong> desta página mostrando sua posição.</p>
+        </div>
+
+        <a href="https://wa.me/5585996787670?text=Ol%C3%A1!%20Acabei%20de%20garantir%20minha%20vaga%20na%20LIGA%20FIRE.%20Segue%20em%20anexo%20o%20comprovante%20de%20pagamento%20e%20o%20print%20da%20minha%20posi%C3%A7%C3%A3o.%20Aguardo%20a%20adi%C3%A7%C3%A3o%20no%20grupo!" 
+           target="_blank" class="btn-whatsapp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+            </svg>
+            Enviar Comprovante e Print no WhatsApp
+        </a>
+
+        <div class="players-section">
+            <h2 class="players-title">👥 Jogadores Inscritos</h2>
+            <ul id="playerList" class="player-list">
+                <li class="loading-list">Carregando lista da planilha...</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 LIGA FIRE DIÁRIO ONLINE. Todos os direitos reservados.</p>
+        </div>
+    </div>
+
+    <script>
+        const SHEET_ID = '1LWinVc3oZBiGwx7rSad-HhdzcyQK_yPwZWVCLCDJZHw';
+        const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+
+        async function loadPlayers() {
+            const params = new URLSearchParams(window.location.search);
+            const userIgn = params.get('ign')?.trim().toLowerCase();
+            const listEl = document.getElementById('playerList');
+            
+            if (!userIgn) {
+                listEl.innerHTML = '<li class="loading-list" style="color: #ff6b6b;">Erro: Dados do jogador não encontrados.</li>';
+                return;
+            }
+
+            try {
+                const response = await fetch(SHEET_URL + '&t=' + Date.now());
+                const text = await response.text();
+                
+                const jsonString = text.substring(47).slice(0, -2);
+                const data = JSON.parse(jsonString);
+                
+                listEl.innerHTML = '';
+
+                const rows = data.table.rows;
+                const cols = data.table.cols;
+                
+                // Encontra automaticamente as colunas IGN e Status
+                let ignIndex = 4; // Coluna E (padrão)
+                let statusIndex = 6; // Coluna G (padrão)
+                
+                for (let i = 0; i < cols.length; i++) {
+                    const label = cols[i].label ? cols[i].label.toUpperCase() : '';
+                    if (label.includes('IGN') || label.includes('NOME NO JOGO')) {
+                        ignIndex = i;
+                    }
+                    if (label.includes('STATUS')) {
+                        statusIndex = i;
+                    }
+                }
+
+                const jogadores = [];
+                for (let i = 0; i < rows.length; i++) {
+                    const row = rows[i].c;
+                    if (!row) continue;
+
+                    const ignCell = row[ignIndex];
+                    const statusCell = row[statusIndex];
+
+                    const ignValue = ignCell && ignCell.v ? String(ignCell.v).trim() : '';
+                    const statusValue = statusCell && statusCell.v ? String(statusCell.v).trim().toUpperCase() : '';
+
+                    // Mostra TODAS as linhas que tiverem IGN preenchido (espelha a planilha)
+                    // Só filtra linhas completamente vazias
+                    if (ignValue !== '' && ignValue !== 'undefined' && ignValue !== 'null') {
+                        jogadores.push({ ign: ignValue, status: statusValue });
+                    }
+                }
+
+                if (jogadores.length > 0) {
+                    let userFound = false;
+
+                    jogadores.forEach((player, index) => {
+                        const playerIgnLower = player.ign.toLowerCase();
+                        const isCurrentUser = (playerIgnLower === userIgn);
+                        
+                        if (isCurrentUser) userFound = true;
+
+                        const li = document.createElement('li');
+                        li.className = `player-item ${isCurrentUser ? 'current-user' : ''}`;
+                        if (isCurrentUser) li.id = 'currentUserRow';
+                        
+                        li.innerHTML = `
+                            <span class="player-number">${index + 1}º</span>
+                            <span class="player-name">${escapeHtml(player.ign)}</span>
+                            ${isCurrentUser ? '<span class="current-user-badge">VOCÊ</span>' : ''}
+                        `;
+                        listEl.appendChild(li);
+                    });
+
+                    if (userFound) {
+                        setTimeout(() => {
+                            const userRow = document.getElementById('currentUserRow');
+                            if (userRow) {
+                                userRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }
+                        }, 500);
+                    }
+                } else {
+                    listEl.innerHTML = '<li class="loading-list">Nenhum jogador encontrado na lista ainda.</li>';
+                }
+
+            } catch (error) {
+                console.error('Erro ao carregar lista:', error);
+                listEl.innerHTML = '<li class="loading-list" style="color: #ff6b6b;">Erro ao carregar a lista. Verifique se a planilha está definida como "Pública".</li>';
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        loadPlayers();
+    </script>
+</body>
+</html>

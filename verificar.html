@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificando Pagamento - LIGA FIRE</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background-color: #252525;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            border-top: 4px solid #ffd700;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .spinner {
+            border: 4px solid rgba(255, 215, 0, 0.1);
+            border-top: 4px solid #ffd700;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        h1 { font-size: 1.5rem; color: #ffffff; margin-bottom: 10px; }
+        p { color: #888; font-size: 0.95rem; line-height: 1.5; }
+        
+        .status-box {
+            margin-top: 20px; padding: 20px; border-radius: 8px;
+            font-weight: 600; display: none; animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .status-error { background-color: rgba(255, 0, 0, 0.1); border: 1px solid #ff4444; color: #ff6b6b; }
+        .status-success { background-color: rgba(40, 167, 69, 0.1); border: 1px solid #28a745; color: #28a745; }
+        .status-free { background-color: rgba(0, 123, 255, 0.1); border: 1px solid #007bff; color: #007bff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loadingArea">
+            <div class="spinner"></div>
+            <h1>Verificando Pagamento...</h1>
+            <p>Não feche esta página. Estamos confirmando sua transação e garantindo sua vaga.</p>
+        </div>
+
+        <div id="errorArea" class="status-box status-error">
+            <h1>️ Acesso Negado</h1>
+            <p id="errorMsg">Ocorreu um erro na verificação.</p>
+        </div>
+
+        <div id="successArea" class="status-box status-success">
+            <h1>✅ Vaga Garantida!</h1>
+            <p>Pagamento confirmado com sucesso.<br>Salvando seus dados e redirecionando...</p>
+        </div>
+
+        <div id="freeArea" class="status-box status-free">
+            <h1>🎁 Acesso Gratuito Confirmado!</h1>
+            <p>Código promocional aplicado com sucesso.<br>Salvando seus dados e redirecionando...</p>
+        </div>
+    </div>
+
+    <script>
+        const WORKER_URL = 'https://gsd.store-login-pix.workers.dev';
+        const SHEET_URL = 'https://api.sheetmonkey.io/form/3qJan8rDW1cQoVwV13ZnbX';
+        const SECRET_KEY = "LIGA_FIRE_2026_SECRET_KEY_NAO_COMPARTILHE";
+
+        async function init() {
+            const params = new URLSearchParams(window.location.search);
+            const txid = params.get('txid');
+            const nome = params.get('nome');
+            const cpf = params.get('cpf');
+            const idJogo = params.get('idJogo');
+            const whatsapp = params.get('whatsapp');
+            const ign = params.get('ign');
+            const sig = params.get('sig');
+
+            // 1. VERIFICAÇÃO DE SEGURANÇA (Anti-burla de URL)
+            if (!txid || !nome || !sig) {
+                showError("Link inválido ou dados corrompidos. Volte e faça o pagamento novamente.");
+                return;
+            }
+
+            const expectedSig = btoa(`${txid}${nome}${cpf}${idJogo}${whatsapp}${ign}${SECRET_KEY}`);
+            if (sig !== expectedSig) {
+                showError("Tentativa de adulteração de dados detectada. O link é inválido.");
+                return;
+            }
+
+            // 2. PROTEÇÃO CONTRA DUPLICIDADE
+            const sessionKey = 'processed_' + txid;
+            const localKey = 'saved_' + txid;
+            
+            if (sessionStorage.getItem(sessionKey) === 'true' || localStorage.getItem(localKey) === 'true') {
+                // Verifica se é pagamento gratuito ou normal
+                if (txid.startsWith('FREE-')) {
+                    showFreeSuccessAndRedirect(ign, txid);
+                } else {
+                    showSuccessAndRedirect(ign, txid);
+                }
+                return;
+            }
+
+            // 3. VERIFICAR NO WORKER
+            try {
+                const response = await fetch(WORKER_URL + '/verificar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ transactionId: txid })
+                });
+                
+                const data = await response.json();
+
+                // CASO 1: Pagamento Gratuito (código promocional)
+                if (txid.startsWith('FREE-') || data.isFree) {
+                    await salvarNaPlanilha(nome, cpf, idJogo, whatsapp, ign, txid);
+                    sessionStorage.setItem(sessionKey, 'true');
+                    localStorage.setItem(localKey, 'true');
+                    showFreeSuccessAndRedirect(ign, txid);
+                    return;
+                }
+
+                // CASO 2: Pagamento Normal via PIX
+                if (data.status === 'COMPLETO') {
+                    await salvarNaPlanilha(nome, cpf, idJogo, whatsapp, ign, txid);
+                    sessionStorage.setItem(sessionKey, 'true');
+                    localStorage.setItem(localKey, 'true');
+                    showSuccessAndRedirect(ign, txid);
+                } else if (data.status === 'FALHA' || data.status === 'EXPIRADO') {
+                    showError("O pagamento não foi identificado ou expirou. Por favor, inicie uma nova inscrição.");
+                } else {
+                    showError("Aguardando confirmação bancária. Tente novamente em alguns instantes.");
+                }
+            } catch (error) {
+                console.error(error);
+                showError("Erro de conexão ao verificar o pagamento. Verifique sua internet.");
+            }
+        }
+
+        async function salvarNaPlanilha(nome, cpf, idJogo, whatsapp, ign, txid) {
+            const formData = new FormData();
+            
+            const agora = new Date();
+            const dataHoraFormatada = agora.toLocaleString('pt-BR', { 
+                day: '2-digit', month: '2-digit', year: 'numeric', 
+                hour: '2-digit', minute: '2-digit', second: '2-digit' 
+            });
+
+            formData.append('Nome', nome);
+            formData.append('CPF', cpf);
+            formData.append('ID_Jogo', idJogo);
+            formData.append('WhatsApp', whatsapp);
+            formData.append('IGN', ign);
+            formData.append('Transaction_ID', txid);
+            formData.append('Status', 'PAGO');
+            formData.append('Data_Hora', dataHoraFormatada);
+
+            try {
+                await fetch(SHEET_URL, { method: 'POST', body: formData });
+            } catch (err) {
+                console.error("Erro ao salvar na planilha:", err);
+            }
+        }
+
+        function showSuccessAndRedirect(ign, txid) {
+            document.getElementById('loadingArea').style.display = 'none';
+            document.getElementById('successArea').style.display = 'block';
+            
+            setTimeout(() => {
+                window.location.href = `sucesso.html?ign=${encodeURIComponent(ign)}&txid=${txid}`;
+            }, 2500);
+        }
+
+        function showFreeSuccessAndRedirect(ign, txid) {
+            document.getElementById('loadingArea').style.display = 'none';
+            document.getElementById('freeArea').style.display = 'block';
+            
+            setTimeout(() => {
+                window.location.href = `sucesso.html?ign=${encodeURIComponent(ign)}&txid=${txid}`;
+            }, 2500);
+        }
+
+        function showError(msg) {
+            document.getElementById('loadingArea').style.display = 'none';
+            document.getElementById('errorArea').style.display = 'block';
+            document.getElementById('errorMsg').innerText = msg;
+        }
+
+        init();
+    </script>
+</body>
+</html>

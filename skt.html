@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento PIX - LIGA FIRE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .payment-container {
+            background-color: #252525;
+            border-radius: 12px;
+            padding: 35px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #333;
+            border-top: 4px solid #ffd700;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #b8860b 0%, #8b6508 100%);
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 800;
+            padding: 10px 30px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #d4af37;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #ffd700;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #1a1a1a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: #666;
+        }
+
+        .promo-hint {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .terms-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 25px 0;
+            padding: 15px;
+            background-color: #1a1a1a;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+
+        .terms-container input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: #ffd700;
+            cursor: pointer;
+        }
+
+        .terms-container label {
+            font-size: 0.85rem;
+            color: #b0b0b0;
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        .terms-container label strong {
+            color: #ff6b6b;
+        }
+
+        .btn-finalize {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #b8860b 0%, #8b6508 100%);
+            color: #ffffff;
+            border: 1px solid #d4af37;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-finalize:hover:not(:disabled) {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(184, 134, 11, 0.4);
+        }
+
+        .btn-finalize:disabled {
+            background-color: #333;
+            border-color: #444;
+            color: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .info-text {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 20px;
+            line-height: 1.5;
+            padding: 15px;
+            background-color: #1a1a1a;
+            border-radius: 6px;
+            border-left: 3px solid #ffd700;
+        }
+
+        .info-text strong {
+            color: #ffd700;
+        }
+
+        .pix-area {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .qr-container {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 15px 0;
+            border: 2px dashed #ffd700;
+        }
+
+        .qr-container img {
+            width: 200px;
+            height: 200px;
+            display: block;
+        }
+
+        .copy-paste-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .copy-paste-container input {
+            flex: 1;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #888;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .btn-copy {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-copy:hover {
+            background-color: #ffd700;
+            color: #000;
+        }
+
+        .status-message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .status-pending {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .status-success {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+            border: 1px solid rgba(40, 167, 69, 0.3);
+        }
+
+        .status-free {
+            background-color: rgba(0, 123, 255, 0.1);
+            color: #007bff;
+            border: 1px solid rgba(0, 123, 255, 0.3);
+        }
+
+        .status-error {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid currentColor;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            background-color: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff4444;
+            border-radius: 6px;
+            color: #ff6b6b;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .promo-applied {
+            display: none;
+            background-color: rgba(40, 167, 69, 0.1);
+            border: 1px solid #28a745;
+            color: #28a745;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .payment-container {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .copy-paste-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="payment-container">
+        <div id="paymentForm">
+            <div class="header">
+                <h1>Finalizar Inscrição</h1>
+                <p>LIGA FIRE DIÁRIO ONLINE</p>
+                <div class="price-tag" id="priceDisplay">R$ 6,00</div>
+            </div>
+
+            <form id="formData">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" required placeholder="Ex: João da Silva">
+                </div>
+
+                <div class="form-group">
+                    <label for="cpf">CPF (apenas números)</label>
+                    <input type="text" id="cpf" required maxlength="11" pattern="\d{11}" placeholder="Ex: 12345678909">
+                </div>
+
+                <div class="form-group">
+                    <label for="idJogo">ID do Jogo</label>
+                    <input type="text" id="idJogo" required placeholder="Ex: 123456789">
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">Número do WhatsApp</label>
+                    <input type="text" id="whatsapp" required placeholder="Ex: 85999999999">
+                </div>
+
+                <div class="form-group">
+                    <label for="ign">Nome dentro do Jogo (IGN)</label>
+                    <input type="text" id="ign" required placeholder="Ex: JogadorPro">
+                </div>
+
+                <div class="form-group">
+                    <label for="promoCode">Código Promocional (Opcional)</label>
+                    <input type="text" id="promoCode" placeholder="Digite seu código (opcional)" autocomplete="off">
+                    <div class="promo-hint">Possui um código? Digite aqui para aplicar desconto</div>
+                    <div id="promoApplied" class="promo-applied">✓ Código aplicado com sucesso!</div>
+                </div>
+
+                <div class="terms-container">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">
+                        Li e concordo com os <strong>Termos de Uso</strong>. Estou ciente de que o valor da inscrição <strong>não possui reembolso</strong> após a confirmação do pagamento e geração da vaga.
+                    </label>
+                </div>
+
+                <button type="submit" id="btnGerar" class="btn-finalize" disabled>
+                    FINALIZAR PEDIDO
+                </button>
+            </form>
+
+            <div class="info-text">
+                <strong>⚠️ Importante:</strong><br>
+                Após a finalização da compra, você receberá sua posição e o link do grupo no WhatsApp.<br><br>
+                É <strong>recomendado enviar o comprovante</strong> para o administrador para a adição rápida no grupo principal do campeonato.
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+
+        <div id="pixArea" class="pix-area">
+            <div class="header">
+                <h1>Pagamento PIX</h1>
+                <p>Escaneie o QR Code ou use o Copia e Cola</p>
+                <div class="price-tag" id="pixPriceDisplay">R$ 6,00</div>
+            </div>
+
+            <div class="qr-container" id="qrContainer">
+                <img id="qrCodeImg" src="" alt="QR Code PIX">
+            </div>
+
+            <div class="copy-paste-container" id="copyPasteContainer">
+                <input type="text" id="copyPaste" readonly>
+                <button onclick="copiarPix()" class="btn-copy">Copiar</button>
+            </div>
+
+            <div id="statusMessage" class="status-message status-pending">
+                <span class="loading-spinner"></span> Aguardando pagamento...
+            </div>
+
+            <button onclick="location.reload()" style="margin-top: 20px; background: none; border: none; color: #888; text-decoration: underline; cursor: pointer; font-size: 0.9rem;">
+                Cancelar e tentar novamente
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURAÇÕES
+        const WORKER_URL = 'https://gsd.store-login-pix.workers.dev';
+        const SECRET_KEY = "LIGA_FIRE_2026_SECRET_KEY_NAO_COMPARTILHE";
+        
+        let transactionId = null;
+        let checkInterval = null;
+        let currentAmount = 6;
+        let isFreePayment = false;
+
+        document.getElementById('terms').addEventListener('change', function() {
+            document.getElementById('btnGerar').disabled = !this.checked;
+        });
+
+        document.getElementById('cpf').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        document.getElementById('promoCode').addEventListener('input', function(e) {
+            const code = e.target.value.trim().toLowerCase();
+            const priceDisplay = document.getElementById('priceDisplay');
+            const promoApplied = document.getElementById('promoApplied');
+            
+            if (code === 'mark') {
+                currentAmount = 5;
+                priceDisplay.textContent = 'R$ 5,00';
+                promoApplied.style.display = 'block';
+                promoApplied.textContent = '✓ Código aplicado - Desconto de R$ 1,00';
+            } else if (code === '20102001') {
+                currentAmount = 0;
+                priceDisplay.textContent = 'GRÁTIS';
+                promoApplied.style.display = 'block';
+                promoApplied.textContent = '✓ Código aplicado - Acesso Gratuito';
+            } else {
+                currentAmount = 6;
+                priceDisplay.textContent = 'R$ 6,00';
+                promoApplied.style.display = 'none';
+            }
+        });
+
+        document.getElementById('formData').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome').value.trim();
+            const cpf = document.getElementById('cpf').value;
+            const idJogo = document.getElementById('idJogo').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const ign = document.getElementById('ign').value.trim();
+            const promoCode = document.getElementById('promoCode').value.trim();
+
+            if (cpf.length !== 11) {
+                mostrarErro('O CPF deve conter exatamente 11 números.');
+                return;
+            }
+
+            const btn = document.getElementById('btnGerar');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading-spinner"></span> Processando...';
+            limparErro();
+
+            try {
+                const response = await fetch(WORKER_URL + '/criar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        nome, 
+                        cpf,
+                        idJogo,
+                        whatsapp,
+                        ign,
+                        promoCode: promoCode || undefined
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.erro || 'Falha ao criar pagamento.');
+                }
+
+                transactionId = data.transactionId;
+                isFreePayment = data.isFree || false;
+
+                if (isFreePayment) {
+                    document.getElementById('paymentForm').style.display = 'none';
+                    document.getElementById('pixArea').style.display = 'block';
+                    document.getElementById('qrContainer').style.display = 'none';
+                    document.getElementById('copyPasteContainer').style.display = 'none';
+                    document.getElementById('pixPriceDisplay').textContent = 'PAGAMENTO GRATUITO';
+                    
+                    const statusEl = document.getElementById('statusMessage');
+                    statusEl.className = 'status-message status-free';
+                    statusEl.innerHTML = '✅ Pagamento gratuito aprovado! Redirecionando...';
+                    
+                    setTimeout(() => {
+                        redirecionarParaVerificacao(nome, cpf, idJogo, whatsapp, ign);
+                    }, 2000);
+                    return;
+                }
+
+                document.getElementById('paymentForm').style.display = 'none';
+                document.getElementById('pixArea').style.display = 'block';
+                document.getElementById('pixPriceDisplay').textContent = `R$ ${currentAmount.toFixed(2).replace('.', ',')}`;
+                
+                document.getElementById('qrCodeImg').src = data.qrcodeUrl;
+                document.getElementById('copyPaste').value = data.copyPaste;
+
+                iniciarVerificacao(nome, cpf, idJogo, whatsapp, ign);
+
+            } catch (error) {
+                btn.disabled = false;
+                btn.innerHTML = 'FINALIZAR PEDIDO';
+                mostrarErro(error.message);
+            }
+        });
+
+        function iniciarVerificacao(nome, cpf, idJogo, whatsapp, ign) {
+            const statusEl = document.getElementById('statusMessage');
+            
+            checkInterval = setInterval(async () => {
+                try {
+                    const response = await fetch(WORKER_URL + '/verificar', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ transactionId })
+                    });
+                    
+                    const data = await response.json();
+
+                    if (data.status === 'COMPLETO') {
+                        clearInterval(checkInterval);
+                        statusEl.className = 'status-message status-success';
+                        statusEl.innerHTML = '✅ Pagamento confirmado! Redirecionando...';
+                        
+                        setTimeout(() => {
+                            redirecionarParaVerificacao(nome, cpf, idJogo, whatsapp, ign);
+                        }, 2000);
+
+                    } else if (data.status === 'FALHA' || data.status === 'EXPIRADO') {
+                        clearInterval(checkInterval);
+                        statusEl.className = 'status-message status-error';
+                        statusEl.innerHTML = '❌ O pagamento falhou ou expirou. Tente novamente.';
+                    }
+                } catch (error) {
+                    console.error('Erro na verificação:', error);
+                }
+            }, 5000);
+        }
+
+        function redirecionarParaVerificacao(nome, cpf, idJogo, whatsapp, ign) {
+            const signatureString = `${transactionId}${nome}${cpf}${idJogo}${whatsapp}${ign}${SECRET_KEY}`;
+            const signature = btoa(signatureString);
+
+            const params = new URLSearchParams({
+                txid: transactionId,
+                nome: nome,
+                cpf: cpf,
+                idJogo: idJogo,
+                whatsapp: whatsapp,
+                ign: ign,
+                sig: signature
+            });
+            
+            window.location.href = `verificar.html?${params.toString()}`;
+        }
+
+        function copiarPix() {
+            const copyText = document.getElementById('copyPaste');
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            
+            navigator.clipboard.writeText(copyText.value).then(() => {
+                const btn = event.target;
+                const originalText = btn.innerText;
+                btn.innerText = 'Copiado!';
+                btn.style.backgroundColor = '#28a745';
+                btn.style.color = '#fff';
+                btn.style.borderColor = '#28a745';
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = '';
+                    btn.style.color = '';
+                    btn.style.borderColor = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('Erro ao copiar:', err);
+            });
+        }
+
+        function mostrarErro(msg) {
+            const el = document.getElementById('errorMessage');
+            el.innerText = msg;
+            el.style.display = 'block';
+        }
+
+        function limparErro() {
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
