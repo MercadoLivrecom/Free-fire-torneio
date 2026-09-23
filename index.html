@@ -17,7 +17,7 @@
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #1a1a1a;
+            background-color: #121212;
             color: #e0e0e0;
             line-height: 1.6;
         }
@@ -30,192 +30,193 @@
 
         /* ==================== CABEÇALHO ==================== */
         header {
-            background-color: #000000;
-            padding: 20px 0;
-            border-bottom: 2px solid #333;
+            background-color: #0a0a0a;
+            padding: 25px 0;
+            border-bottom: 1px solid #2a2a2a;
         }
 
         .header-content {
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            gap: 20px;
-        }
-
-        .header-logo-img {
-            width: 90px;
-            height: 90px;
-            object-fit: contain;
-            border-radius: 50%;
-            background-color: #1a1a1a;
-            padding: 5px;
-            border: 2px solid #333;
-            flex-shrink: 0;
         }
 
         .logo-text {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, #ff0000 50%, #ffd700 50%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
+            letter-spacing: 3px;
+            color: #ffffff;
+            padding-left: 10px;
+            border-left: 4px solid #ff4444;
         }
 
         /* ==================== MAIN ==================== */
         main {
-            padding: 40px 0;
+            padding: 30px 0;
         }
 
         .info-text {
             text-align: left;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #b0b0b0;
             margin-bottom: 25px;
-            max-width: 600px;
+            padding-left: 10px;
+            border-left: 2px solid #333;
         }
 
         .info-text strong {
-            color: #ffd700;
-        }
-
-        /* ==================== BOTÃO ==================== */
-        .btn-participar {
-            display: inline-block;
-            background: linear-gradient(135deg, #b8860b 0%, #8b6508 100%);
             color: #ffffff;
-            text-decoration: none;
-            padding: 16px 40px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 6px;
-            border: 1px solid #d4af37;
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
         }
 
-        .btn-participar:hover {
-            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(184, 134, 11, 0.5);
+        /* ==================== CARDS DE PREÇO (INSCRIÇÃO/ABATE) ==================== */
+        .pricing-cards {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
         }
 
-        /* ==================== PREMIAÇÕES ==================== */
-        .prizes-section {
-            margin-bottom: 30px;
-        }
-
-        .prizes-title {
-            font-size: 1.2rem;
-            color: #ffd700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            font-weight: 800;
-        }
-
-        .prize-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .prize-card {
-            background-color: #252525;
-            border-radius: 8px;
-            padding: 15px;
+        .price-card {
+            background-color: #1e1e1e;
             border: 1px solid #333;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .prize-card:hover {
-            border-color: #ffd700;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
-        }
-
-        .prize-icon {
-            width: 40px;
-            height: 40px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(255, 215, 0, 0.1);
-            border-radius: 50%;
-            border: 2px solid #ffd700;
-        }
-
-        .prize-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: #ffd700;
-        }
-
-        .prize-info {
+            border-radius: 8px;
+            padding: 15px 20px;
             flex: 1;
-            min-width: 0;
+            min-width: 140px;
+            display: flex;
+            flex-direction: column;
         }
 
-        .prize-label {
+        .price-card.main-price {
+            border-left: 3px solid #ffffff;
+        }
+
+        .price-label {
             font-size: 0.75rem;
             color: #888;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
         }
 
-        .prize-value {
-            font-size: 1.1rem;
+        .price-value {
+            font-size: 1.5rem;
             font-weight: 800;
+            color: #ffffff;
+        }
+
+        .price-detail {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        /* ==================== PODIUM DE PREMIAÇÃO ==================== */
+        .podium-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            padding-left: 10px;
+        }
+
+        .podium-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            max-width: 600px;
+        }
+
+        .podium-card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .podium-card:hover {
+            transform: translateY(-3px);
+            background-color: #252525;
+        }
+
+        .podium-1 {
+            grid-column: 1 / -1;
+            border-top: 3px solid #ffd700;
+            padding: 25px 15px;
+        }
+
+        .podium-2 {
+            grid-column: 1;
+            border-top: 3px solid #c0c0c0;
+        }
+
+        .podium-3 {
+            grid-column: 2;
+            border-top: 3px solid #cd7f32;
+        }
+
+        .podium-rank {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .podium-value {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #ffffff;
+        }
+
+        .podium-1 .podium-value {
+            font-size: 2rem;
             color: #ffd700;
         }
 
-        .prize-detail {
-            font-size: 0.7rem;
+        .podium-detail {
+            font-size: 0.75rem;
             color: #666;
-            margin-top: 2px;
+            margin-top: 5px;
         }
 
         /* ==================== CARROSSEL DE GANHADORES ==================== */
         .winners-section {
             margin-bottom: 40px;
             padding: 20px 0;
-            background: linear-gradient(135deg, #1f1f1f 0%, #252525 100%);
+            background-color: #1a1a1a;
             border-radius: 10px;
-            border: 1px solid #333;
+            border: 1px solid #2a2a2a;
             overflow: hidden;
         }
 
         .winners-title {
-            font-size: 0.95rem;
-            color: #ffd700;
+            font-size: 0.9rem;
+            color: #ffffff;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-align: center;
+            text-align: left;
             margin-bottom: 15px;
             font-weight: 700;
+            padding: 0 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 10px;
         }
 
         .winners-title-icon {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             fill: #ffd700;
         }
 
@@ -239,19 +240,15 @@
         }
 
         @keyframes scrollCarousel {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .winner-card {
-            background-color: #1a1a1a;
-            border: 1px solid #444;
-            border-radius: 8px;
-            padding: 10px 18px;
+            background-color: #252525;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 10px 16px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -261,54 +258,54 @@
         }
 
         .winner-card:hover {
-            border-color: #ffd700;
+            border-color: #555;
             background-color: #2a2a2a;
         }
 
         .winner-icon {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
+            background-color: #333;
             border-radius: 50%;
         }
 
         .winner-icon svg {
-            width: 12px;
-            height: 12px;
-            fill: #000;
+            width: 10px;
+            height: 10px;
+            fill: #ffd700;
         }
 
         .winner-name {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: #e0e0e0;
         }
 
         /* ==================== REGRAS GERAIS ==================== */
         .general-rules-section {
-            background-color: #252525;
+            background-color: #1e1e1e;
             border-radius: 8px;
             padding: 25px;
             margin-bottom: 40px;
-            border-left: 4px solid #ffd700;
+            border-left: 3px solid #ff4444;
         }
 
         .general-rules-title {
-            font-size: 1.3rem;
-            color: #ffd700;
+            font-size: 1.2rem;
+            color: #ffffff;
             margin-bottom: 20px;
             font-weight: 700;
         }
 
         .rule-line {
             display: flex;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #333;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid #2a2a2a;
             color: #e0e0e0;
         }
 
@@ -317,48 +314,50 @@
         }
 
         .rule-line-icon {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             margin-right: 15px;
-            fill: #ff6b6b;
+            margin-top: 3px;
+            fill: #ff4444;
             flex-shrink: 0;
         }
 
         .rule-line-text {
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .rule-line-text strong {
-            color: #ff6b6b;
+            color: #ff4444;
+            font-weight: 700;
         }
 
         .rules-explanation {
             margin-top: 20px;
             padding: 15px;
-            background-color: #1a1a1a;
+            background-color: #121212;
             border-radius: 6px;
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        /* ==================== CATEGORIAS ==================== */
+        /* ==================== CATEGORIAS (ABAS) ==================== */
         .categories {
             display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
+            gap: 10px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
         }
 
         .category-pill {
-            background-color: #2a2a2a;
-            color: #ffd700;
-            padding: 12px 30px;
-            border-radius: 50px;
+            background-color: #1e1e1e;
+            color: #888;
+            padding: 10px 24px;
+            border-radius: 6px;
             font-weight: 600;
-            font-size: 1rem;
-            border: 1px solid #444;
+            font-size: 0.9rem;
+            border: 1px solid #333;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
@@ -366,15 +365,14 @@
         }
 
         .category-pill:hover, .category-pill.active {
-            background-color: #ffd700;
+            background-color: #ffffff;
             color: #000000;
-            border-color: #ffd700;
+            border-color: #ffffff;
         }
 
-        /* ==================== SEÇÕES ARMAS / PERSONAGENS ==================== */
         .section-header {
-            font-size: 1.5rem;
-            color: #ff4444;
+            font-size: 1.3rem;
+            color: #ffffff;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #ff4444;
@@ -382,22 +380,22 @@
         }
 
         .general-rule {
-            background-color: #2a1a1a;
-            border: 1px solid #ff4444;
-            border-left: 5px solid #ff4444;
-            padding: 18px 25px;
+            background-color: #1a1212;
+            border: 1px solid #3a2222;
+            border-left: 4px solid #ff4444;
+            padding: 15px 20px;
             margin-bottom: 25px;
             border-radius: 6px;
-            color: #ffcccc;
-            font-size: 1rem;
+            color: #e0e0e0;
+            font-size: 0.95rem;
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
         .general-rule-icon {
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
             flex-shrink: 0;
             fill: #ff4444;
         }
@@ -406,80 +404,83 @@
             color: #ff6b6b;
         }
 
-        .weapons-list, .characters-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        /* ==================== ESTILO INVENTÁRIO (GRID) ==================== */
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 12px;
+            margin-bottom: 40px;
         }
 
-        .weapon-row, .character-row {
-            display: flex;
-            align-items: center;
-            background-color: #252525;
+        .inventory-item {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
             border-radius: 8px;
-            padding: 15px 20px;
-            border-left: 4px solid #ff0000;
-            transition: background-color 0.3s ease;
-        }
-
-        .weapon-row:hover, .character-row:hover {
-            background-color: #2f2f2f;
-        }
-
-        .weapon-img, .character-img {
-            width: 70px;
-            height: 70px;
-            object-fit: contain;
-            margin-right: 25px;
-            flex-shrink: 0;
-            background-color: #1a1a1a;
-            border-radius: 6px;
-            padding: 5px;
-        }
-
-        .weapon-details, .character-details {
+            padding: 15px 10px;
+            text-align: center;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
-        .weapon-name, .character-name {
-            font-size: 1.2rem;
+        .inventory-item:hover {
+            border-color: #ff4444;
+            background-color: #252525;
+            transform: translateY(-3px);
+        }
+
+        .inventory-item img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
+
+        .inventory-item .name {
+            font-size: 0.85rem;
             font-weight: 700;
             color: #ffffff;
+            display: block;
+            margin-bottom: 4px;
         }
 
-        .weapon-status, .character-status {
-            font-size: 0.95rem;
-            color: #ff6b6b;
-            font-weight: 600;
-            margin-top: 4px;
+        .inventory-item .status {
+            font-size: 0.65rem;
+            color: #ff4444;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            background-color: rgba(255, 68, 68, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
         }
 
         /* ==================== REGULAMENTO FINAL ==================== */
         .final-rules-section {
-            margin-top: 60px;
-            background-color: #252525;
+            margin-top: 40px;
+            background-color: #1e1e1e;
             border-radius: 10px;
-            padding: 35px;
-            border-top: 4px solid #ffd700;
-            border-left: 4px solid #ffd700;
+            padding: 30px;
+            border-top: 3px solid #ffffff;
         }
 
         .final-rules-title {
-            font-size: 1.8rem;
-            color: #ffd700;
+            font-size: 1.4rem;
+            color: #ffffff;
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-align: center;
             font-weight: 900;
         }
 
         .final-rule-item {
             display: flex;
             align-items: flex-start;
-            padding: 18px 0;
-            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            border-bottom: 1px solid #2a2a2a;
             gap: 15px;
         }
 
@@ -488,25 +489,25 @@
         }
 
         .final-rule-number {
-            background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+            background-color: #333;
             color: #ffffff;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 1rem;
+            font-size: 0.9rem;
             flex-shrink: 0;
-            border: 2px solid #ffd700;
+            border: 1px solid #555;
         }
 
         .final-rule-content {
             flex: 1;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: #e0e0e0;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .final-rule-content strong {
@@ -514,41 +515,41 @@
             font-weight: 700;
         }
 
-        .final-rule-content .wo-tag {
+        .wo-tag {
             display: inline-block;
-            background-color: #ff0000;
+            background-color: #ff4444;
             color: #ffffff;
-            padding: 2px 10px;
+            padding: 2px 8px;
             border-radius: 4px;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             margin-left: 8px;
             letter-spacing: 1px;
         }
 
         /* ==================== FOOTER ==================== */
         footer {
-            text-align: center;
+            text-align: left;
             padding: 30px 0;
-            margin-top: 60px;
-            border-top: 1px solid #333;
-            color: #666;
-            font-size: 0.9rem;
+            margin-top: 40px;
+            border-top: 1px solid #2a2a2a;
+            color: #555;
+            font-size: 0.85rem;
         }
 
         /* ==================== WHATSAPP FLOAT ==================== */
         .whatsapp-float {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 25px;
+            right: 25px;
             background-color: #25d366;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
             transition: all 0.3s ease;
             z-index: 1000;
             text-decoration: none;
@@ -556,113 +557,59 @@
 
         .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
         }
 
         .whatsapp-float svg {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             fill: #ffffff;
         }
 
         /* ==================== RESPONSIVO CELULAR ==================== */
         @media (max-width: 600px) {
-            .header-content {
-                gap: 15px;
-            }
-
-            .header-logo-img {
-                width: 70px;
-                height: 70px;
-            }
-
             .logo-text {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
-            .prize-grid {
-                grid-template-columns: 1fr 1fr;
+            .pricing-cards {
+                flex-direction: column;
+            }
+
+            .podium-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .podium-1, .podium-2, .podium-3 {
+                grid-column: 1;
+            }
+
+            .podium-1 {
+                order: 1;
+            }
+            .podium-2 {
+                order: 2;
+            }
+            .podium-3 {
+                order: 3;
+            }
+
+            .inventory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
                 gap: 10px;
             }
 
-            .prize-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 12px 8px;
-                gap: 8px;
+            .inventory-item img {
+                width: 45px;
+                height: 45px;
             }
 
-            .prize-icon {
-                width: 36px;
-                height: 36px;
-            }
-
-            .prize-icon svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            .prize-label {
-                font-size: 0.65rem;
-            }
-
-            .prize-value {
-                font-size: 0.95rem;
-            }
-
-            .prize-detail {
-                font-size: 0.6rem;
-            }
-
-            .winners-section {
-                padding: 15px 0;
-            }
-
-            .winners-title {
-                font-size: 0.85rem;
-                margin-bottom: 12px;
-            }
-
-            .winner-card {
-                padding: 8px 14px;
-                gap: 8px;
-            }
-
-            .winner-icon {
-                width: 20px;
-                height: 20px;
-            }
-
-            .winner-icon svg {
-                width: 11px;
-                height: 11px;
-            }
-
-            .winner-name {
+            .inventory-item .name {
                 font-size: 0.8rem;
             }
 
-            .carousel-track {
-                gap: 10px;
-                animation-duration: 25s;
-            }
-
-            .categories {
-                justify-content: flex-start;
-            }
-
-            .weapon-row, .character-row {
-                padding: 15px;
-            }
-
-            .weapon-img, .character-img {
-                width: 60px;
-                height: 60px;
-                margin-right: 15px;
-            }
-
-            .weapon-name, .character-name {
-                font-size: 1.1rem;
+            .final-rules-section {
+                padding: 20px;
             }
 
             .general-rule {
@@ -670,226 +617,30 @@
                 align-items: flex-start;
                 gap: 10px;
             }
-
-            .general-rules-section {
-                padding: 20px;
-            }
-
-            .final-rules-section {
-                padding: 25px 20px;
-            }
-
-            .final-rules-title {
-                font-size: 1.4rem;
-            }
-
-            .final-rule-item {
-                flex-direction: column;
-                gap: 10px;
-            }
         }
 
-        /* ==================== RESPONSIVO DESKTOP ==================== */
         @media (min-width: 1024px) {
             .container {
-                max-width: 1100px;
+                max-width: 1000px;
                 padding: 0 40px;
             }
 
-            header {
-                padding: 30px 0;
-            }
-
-            .header-logo-img {
-                width: 100px;
-                height: 100px;
-            }
-
             .logo-text {
-                font-size: 3.2rem;
-                letter-spacing: 4px;
+                font-size: 2.8rem;
             }
 
-            main {
-                padding: 50px 0;
-            }
-
-            .info-text {
-                font-size: 1.2rem;
+            .podium-grid {
                 max-width: 700px;
             }
 
-            .btn-participar {
-                padding: 18px 50px;
-                font-size: 1.2rem;
+            .inventory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 15px;
             }
 
-            .prizes-title {
-                font-size: 1.5rem;
-                text-align: center;
-                margin-bottom: 25px;
-            }
-
-            .prize-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-            }
-
-            .prize-card {
-                padding: 25px;
-                gap: 18px;
-                border-radius: 10px;
-            }
-
-            .prize-card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 8px 25px rgba(255, 215, 0, 0.15);
-            }
-
-            .prize-icon {
-                width: 55px;
-                height: 55px;
-            }
-
-            .prize-icon svg {
-                width: 28px;
-                height: 28px;
-            }
-
-            .prize-label {
-                font-size: 0.85rem;
-            }
-
-            .prize-value {
-                font-size: 1.5rem;
-            }
-
-            .prize-detail {
-                font-size: 0.8rem;
-            }
-
-            .winners-section {
-                padding: 25px 0;
-            }
-
-            .winners-title {
-                font-size: 1.1rem;
-                margin-bottom: 20px;
-            }
-
-            .winner-card {
-                padding: 12px 22px;
-                gap: 12px;
-            }
-
-            .winner-icon {
-                width: 26px;
-                height: 26px;
-            }
-
-            .winner-icon svg {
-                width: 14px;
-                height: 14px;
-            }
-
-            .winner-name {
-                font-size: 1rem;
-            }
-
-            .carousel-track {
-                gap: 18px;
-                animation-duration: 40s;
-            }
-
-            .general-rules-section {
-                padding: 35px;
-            }
-
-            .general-rules-title {
-                font-size: 1.5rem;
-            }
-
-            .rule-line-text {
-                font-size: 1.1rem;
-            }
-
-            .category-pill {
-                padding: 14px 40px;
-                font-size: 1.1rem;
-            }
-
-            .section-header {
-                font-size: 1.8rem;
-            }
-
-            .weapon-row, .character-row {
-                padding: 20px 25px;
-            }
-
-            .weapon-img, .character-img {
-                width: 80px;
-                height: 80px;
-                margin-right: 30px;
-            }
-
-            .weapon-name, .character-name {
-                font-size: 1.3rem;
-            }
-
-            .weapon-status, .character-status {
-                font-size: 1rem;
-            }
-
-            .final-rules-section {
-                padding: 45px;
-            }
-
-            .final-rules-title {
-                font-size: 2rem;
-            }
-
-            .final-rule-item {
-                padding: 22px 0;
-            }
-
-            .final-rule-number {
-                width: 42px;
-                height: 42px;
-                font-size: 1.1rem;
-            }
-
-            .final-rule-content {
-                font-size: 1.1rem;
-            }
-
-            .whatsapp-float {
+            .inventory-item img {
                 width: 65px;
                 height: 65px;
-                bottom: 40px;
-                right: 40px;
-            }
-
-            .whatsapp-float svg {
-                width: 36px;
-                height: 36px;
-            }
-        }
-
-        @media (min-width: 1400px) {
-            .container {
-                max-width: 1200px;
-            }
-
-            .prize-grid {
-                gap: 25px;
-            }
-
-            .prize-card {
-                padding: 30px;
-            }
-
-            .prize-value {
-                font-size: 1.7rem;
             }
         }
     </style>
@@ -899,7 +650,6 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <img src="Icon_face_Anchor_B.png" alt="Logo Anchor" class="header-logo-img">
                 <h1 class="logo-text">LIGA FIRE</h1>
             </div>
         </div>
@@ -911,65 +661,43 @@
             <strong>Atenção:</strong> A data e o horário do campeonato são anunciados exclusivamente no grupo oficial do WhatsApp.
         </p>
 
-        <a href="skt.html" class="btn-participar">
+        <!-- VALORES DE INSCRIÇÃO E ABATE -->
+        <div class="pricing-cards">
+            <div class="price-card main-price">
+                <span class="price-label">Inscrição</span>
+                <span class="price-value" id="val-inscricao">R$ 6,00</span>
+                <span class="price-detail">por pessoa</span>
+            </div>
+            <div class="price-card">
+                <span class="price-label">Valor por Abate</span>
+                <span class="price-value" id="val-abate">R$ 0,50</span>
+                <span class="price-detail">pago por kill</span>
+            </div>
+        </div>
+
+        <a href="skt.html" class="category-pill active" style="text-align: center; margin-bottom: 40px; display: block;">
             Garantir Minha Vaga
         </a>
 
-        <!-- PREMIAÇÕES -->
-        <div class="prizes-section">
-            <h3 class="prizes-title">Premiação</h3>
+        <!-- PREMIAÇÃO EM PODIUM -->
+        <div class="podium-section">
+            <h3 class="section-title">Premiação</h3>
             
-            <div class="prize-grid">
-                <div class="prize-card">
-                    <div class="prize-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                            <path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0zm0 96h-40V48h40c4.4 0 8.4 2.7 10 6.8l24 62.5c1.5 3.9 .8 8.3-1.9 11.5L400 176zm-224 0V176l-32.1-9.2c-2.7-3.2-3.4-7.6-1.9-11.5l24-62.5c1.6-4.1 5.6-6.8 10-6.8h40v48zm112 320c-8.8 0-16-7.2-16-16s7.2-16 16-16s16 7.2 16 16s-7.2 16-16 16z"/>
-                        </svg>
-                    </div>
-                    <div class="prize-info">
-                        <div class="prize-label">1º Lugar</div>
-                        <div class="prize-value">R$ 50,00</div>
-                        <div class="prize-detail">Campeão da sala</div>
-                    </div>
+            <div class="podium-grid">
+                <div class="podium-card podium-1">
+                    <div class="podium-rank">1º Lugar</div>
+                    <div class="podium-value">R$ 50,00</div>
+                    <div class="podium-detail">Campeão da sala</div>
                 </div>
 
-                <div class="prize-card">
-                    <div class="prize-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                            <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24h-8V288h8c13.3 0 24-10.7 24-24s-10.7-24-24-24h-48c-13.3 0-24-10.7-24-24s10.7-24 24-24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H216c-13.3 0-24 10.7-24 24s10.7 24 24 24h8v48h-8c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24 10.7 24 24s-10.7 24-24 24h-48z"/>
-                        </svg>
-                    </div>
-                    <div class="prize-info">
-                        <div class="prize-label">Por Abate</div>
-                        <div class="prize-value">R$ 1,00</div>
-                        <div class="prize-detail">Cada abate realizado</div>
-                    </div>
+                <div class="podium-card podium-2">
+                    <div class="podium-rank">2º Lugar</div>
+                    <div class="podium-value" id="val-top2">R$ 25,00</div>
                 </div>
 
-                <div class="prize-card">
-                    <div class="prize-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                            <path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/>
-                        </svg>
-                    </div>
-                    <div class="prize-info">
-                        <div class="prize-label">Sala 48+ Membros</div>
-                        <div class="prize-value">R$ 50,00</div>
-                        <div class="prize-detail">1º lugar + R$ 1/abate</div>
-                    </div>
-                </div>
-
-                <div class="prize-card">
-                    <div class="prize-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-                        </svg>
-                    </div>
-                    <div class="prize-info">
-                        <div class="prize-label">Menos de 48</div>
-                        <div class="prize-value">R$ 20,00</div>
-                        <div class="prize-detail">Do boi + R$ 1/abate</div>
-                    </div>
+                <div class="podium-card podium-3">
+                    <div class="podium-rank">3º Lugar</div>
+                    <div class="podium-value" id="val-top3">R$ 15,00</div>
                 </div>
             </div>
         </div>
@@ -981,86 +709,51 @@
                     <path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/>
                 </svg>
                 Últimos Ganhadores
-                <svg class="winners-title-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                    <path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/>
-                </svg>
             </h3>
 
             <div class="carousel-wrapper">
                 <div class="carousel-track">
                     <div class="winner-card">
                         <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">i'm prime ﾠ愛🥶</span>
+                        <span class="winner-name">i'm prime</span>
                     </div>
                     <div class="winner-card">
                         <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">ꓥＰＯＳＥＮＴꓥＤＯ ツ</span>
+                        <span class="winner-name">POSENTO</span>
                     </div>
                     <div class="winner-card">
                         <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">Ⓥｒａｓｇａ ｘｏｔａツ</span>
+                        <span class="winner-name">Vrasga</span>
                     </div>
                     <div class="winner-card">
                         <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">Ⓥ ™ ᙖᖇᑌ᙭〇 么🇧🇷</span>
+                        <span class="winner-name">V BRUXO</span>
                     </div>
                     <div class="winner-card">
                         <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">Ⓥ ɴᴇʏᴍᴀʀㅤ🇧🇷</span>
+                        <span class="winner-name">V NEYMAR</span>
                     </div>
                     <div class="winner-card">
                         <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">༒🇧🇷不要點擊愛炎🇧🇷༒</span>
-                    </div>
-                    <div class="winner-card">
-                        <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">ＲＡＳＧＡ ＸＯＴＡ</span>
-                    </div>
-                    <div class="winner-card">
-                        <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">🔥⃝⃟⃟⃟🐦‍🔥 ṧỔΐ</span>
-                    </div>
-                    <div class="winner-card">
-                        <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">ＳＥＭㅤＳＥＮＳＩㅤ☯</span>
+                        <span class="winner-name">SEM SENSI</span>
                     </div>
 
-                    <!-- Lista duplicada para loop infinito -->
+                    <!-- Duplicado para loop infinito -->
                     <div class="winner-card">
                         <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">i'm prime ﾠ愛🥶</span>
+                        <span class="winner-name">i'm prime</span>
                     </div>
                     <div class="winner-card">
                         <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">ꓥＰＯＳＥＮＴꓥＤＯ ツ</span>
+                        <span class="winner-name">POSENTO</span>
                     </div>
                     <div class="winner-card">
                         <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">Ⓥｒａｓｇａ ｘｏｔａツ</span>
+                        <span class="winner-name">Vrasga</span>
                     </div>
                     <div class="winner-card">
                         <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">Ⓥ ™ ᙖᖇᑌ᙭〇 么🇧🇷</span>
-                    </div>
-                    <div class="winner-card">
-                        <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">Ⓥ ɴᴇʏᴍᴀʀㅤ🇧🇷</span>
-                    </div>
-                    <div class="winner-card">
-                        <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">༒🇧🇷不要點擊愛炎🇧🇷༒</span>
-                    </div>
-                    <div class="winner-card">
-                        <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">ＲＡＳＧＡ ＸＯＴＡ</span>
-                    </div>
-                    <div class="winner-card">
-                        <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">🔥⃝⃟⃟⃟🐦‍🔥 ṧỔΐ</span>
-                    </div>
-                    <div class="winner-card">
-                        <div class="winner-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M400 0H176c-26.5 0-50.2 16.1-59.7 40.8L80.6 135.3c-11.3 29.4-7.1 62.4 11.1 88.2L176 343.7V464c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V343.7l84.3-120.2c18.1-25.8 22.4-58.8 11.1-88.2L459.7 40.8C450.2 16.1 426.5 0 400 0z"/></svg></div>
-                        <span class="winner-name">ＳＥＭㅤＳＥＮＳＩㅤ☯</span>
+                        <span class="winner-name">V BRUXO</span>
                     </div>
                 </div>
             </div>
@@ -1074,39 +767,32 @@
                 <svg class="rule-line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.5 0 39.9s-20.3 19.8-34.5 19.8H40c-14.2 0-27.3-7.5-34.5-19.8s-7.3-27.5 0-39.9l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/>
                 </svg>
-                <span class="rule-line-text">Locomoção de cavalo ou qualquer veículo <strong>WO</strong></span>
+                <span class="rule-line-text">Locomoção de cavalo ou qualquer veículo é <strong>WO</strong></span>
             </div>
 
             <div class="rule-line">
                 <svg class="rule-line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.5 0 39.9s-20.3 19.8-34.5 19.8H40c-14.2 0-27.3-7.5-34.5-19.8s-7.3-27.5 0-39.9l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/>
                 </svg>
-                <span class="rule-line-text">Personagens não permitidos <strong>WO</strong></span>
+                <span class="rule-line-text">Personagens não permitidos na lista oficial são <strong>WO</strong></span>
             </div>
 
             <div class="rule-line">
                 <svg class="rule-line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.5 0 39.9s-20.3 19.8-34.5 19.8H40c-14.2 0-27.3-7.5-34.5-19.8s-7.3-27.5 0-39.9l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/>
                 </svg>
-                <span class="rule-line-text">Replay suspeito <strong>WO</strong></span>
+                <span class="rule-line-text">Replay suspeito será analisado e punido (<strong>WO</strong>)</span>
             </div>
 
             <div class="rule-line">
                 <svg class="rule-line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.5 0 39.9s-20.3 19.8-34.5 19.8H40c-14.2 0-27.3-7.5-34.5-19.8s-7.3-27.5 0-39.9l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/>
                 </svg>
-                <span class="rule-line-text">Sem replay ou contra abaixo de nível 20 <strong>WO</strong></span>
-            </div>
-
-            <div class="rule-line">
-                <svg class="rule-line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.5 0 39.9s-20.3 19.8-34.5 19.8H40c-14.2 0-27.3-7.5-34.5-19.8s-7.3-27.5 0-39.9l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/>
-                </svg>
-                <span class="rule-line-text">Armas não permitidas também é <strong>WO</strong></span>
+                <span class="rule-line-text">Sem replay ou conta abaixo do nível 20 é <strong>WO</strong></span>
             </div>
 
             <div class="rules-explanation">
-                Restringimos a maioria dos personagens para o jogo ficar jogável para todos.
+                Restringimos a maioria dos personagens e armas para o jogo ficar equilibrado e jogável para todos os participantes.
             </div>
         </div>
 
@@ -1114,10 +800,10 @@
         <div class="categories">
             <a href="#armas" class="category-pill active">Armas</a>
             <a href="#personagens" class="category-pill">Personagens</a>
-            <a href="#regras" class="category-pill">Regras</a>
+            <a href="#regras" class="category-pill">Regulamento</a>
         </div>
 
-        <!-- ARMAS PROIBIDAS -->
+        <!-- ARMAS PROIBIDAS (ESTILO INVENTÁRIO) -->
         <h2 class="section-header" id="armas">Armas Proibidas</h2>
 
         <div class="general-rule">
@@ -1125,195 +811,145 @@
                 <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.5 0 39.9s-20.3 19.8-34.5 19.8H40c-14.2 0-27.3-7.5-34.5-19.8s-7.3-27.5 0-39.9l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/>
             </svg>
             <div>
-                <strong>Regra Geral:</strong> Todo lança-granadas e pistola de foguete são <strong>PROIBIDOS WO</strong>, independente do modelo.
+                <strong>Regra Geral:</strong> Todo lança-granadas e pistola de foguete são <strong>PROIBIDOS (WO)</strong>, independente do modelo.
             </div>
         </div>
         
-        <div class="weapons-list">
-            <div class="weapon-row">
-                <img src="Trogon.png" alt="Trogon" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">Trogon</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+        <div class="inventory-grid">
+            <div class="inventory-item">
+                <img src="Trogon.png" alt="Trogon">
+                <span class="name">Trogon</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="MAG-7.png" alt="MAG-7" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">MAG-7</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="MAG-7.png" alt="MAG-7">
+                <span class="name">MAG-7</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="Vector.png" alt="Vector" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">Vector</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="Vector.png" alt="Vector">
+                <span class="name">Vector</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="VSS.png" alt="VSS" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">VSS</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="VSS.png" alt="VSS">
+                <span class="name">VSS</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="SKS.png" alt="SKS" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">SKS</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="SKS.png" alt="SKS">
+                <span class="name">SKS</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="SVD.png" alt="SVD" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">SVD</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="SVD.png" alt="SVD">
+                <span class="name">SVD</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="M60.png" alt="M60" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">M60</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="M60.png" alt="M60">
+                <span class="name">M60</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="PLASMA.png" alt="Plasma" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">Plasma</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="PLASMA.png" alt="Plasma">
+                <span class="name">Plasma</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="M249.png" alt="M249" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">M249</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="M249.png" alt="M249">
+                <span class="name">M249</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="VSK94.png" alt="VSK-94" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">VSK-94</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="VSK94.png" alt="VSK-94">
+                <span class="name">VSK-94</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="Kar98k.png" alt="Kar98k" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">Kar98k</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="Kar98k.png" alt="Kar98k">
+                <span class="name">Kar98k</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="M79.png" alt="M79" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">M79</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="M79.png" alt="M79">
+                <span class="name">M79</span>
+                <span class="status">Proibida</span>
             </div>
-            <div class="weapon-row">
-                <img src="AWM.png" alt="AWM" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">AWM</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="AWM.png" alt="AWM">
+                <span class="name">AWM</span>
+                <span class="status">Proibida</span>
             </div>
-            <!-- NOVA ARMA ADICIONADA -->
-            <div class="weapon-row">
-                <img src="M590.png" alt="M590" class="weapon-img">
-                <div class="weapon-details">
-                    <span class="weapon-name">M590</span>
-                    <span class="weapon-status">Proibida WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="M590.png" alt="M590">
+                <span class="name">M590</span>
+                <span class="status">Proibida</span>
             </div>
         </div>
 
-        <!-- PERSONAGENS PROIBIDOS -->
-        <h2 class="section-header" id="personagens" style="margin-top: 50px;">Personagens Proibidos</h2>
+        <!-- PERSONAGENS PROIBIDOS (ESTILO INVENTÁRIO) -->
+        <h2 class="section-header" id="personagens" style="margin-top: 20px;">Personagens Proibidos</h2>
 
         <div class="general-rule">
             <svg class="general-rule-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.5 0 39.9s-20.3 19.8-34.5 19.8H40c-14.2 0-27.3-7.5-34.5-19.8s-7.3-27.5 0-39.9l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/>
             </svg>
             <div>
-                <strong>Personagem Redemoinho:</strong> Totalmente <strong>PROIBIDO WO</strong>.
+                <strong>Personagem Redemoinho:</strong> Totalmente <strong>PROIBIDO (WO)</strong>.
             </div>
         </div>
         
-        <div class="characters-list">
-            <div class="character-row">
-                <img src="Xtrema.png" alt="Xtrema" class="character-img">
-                <div class="character-details">
-                    <span class="character-name">Xtrema</span>
-                    <span class="character-status">Proibido WO</span>
-                </div>
+        <div class="inventory-grid">
+            <div class="inventory-item">
+                <img src="Xtrema.png" alt="Xtrema">
+                <span class="name">Xtrema</span>
+                <span class="status">Proibido</span>
             </div>
-            <div class="character-row">
-                <img src="iris.png" alt="Iris" class="character-img">
-                <div class="character-details">
-                    <span class="character-name">Iris</span>
-                    <span class="character-status">Proibido WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="iris.png" alt="Iris">
+                <span class="name">Iris</span>
+                <span class="status">Proibido</span>
             </div>
-            <div class="character-row">
-                <img src="Nero.png" alt="Nero" class="character-img">
-                <div class="character-details">
-                    <span class="character-name">Nero</span>
-                    <span class="character-status">Proibido WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="Nero.png" alt="Nero">
+                <span class="name">Nero</span>
+                <span class="status">Proibido</span>
             </div>
-            <div class="character-row">
-                <img src="Ray.png" alt="Ray" class="character-img">
-                <div class="character-details">
-                    <span class="character-name">Ray</span>
-                    <span class="character-status">Proibido WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="Ray.png" alt="Ray">
+                <span class="name">Ray</span>
+                <span class="status">Proibido</span>
             </div>
-            <div class="character-row">
-                <img src="Morse.png" alt="Morse" class="character-img">
-                <div class="character-details">
-                    <span class="character-name">Morse</span>
-                    <span class="character-status">Proibido WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="Morse.png" alt="Morse">
+                <span class="name">Morse</span>
+                <span class="status">Proibido</span>
             </div>
-            <div class="character-row">
-                <img src="orion.png" alt="Orion" class="character-img">
-                <div class="character-details">
-                    <span class="character-name">Orion</span>
-                    <span class="character-status">Proibido WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="orion.png" alt="Orion">
+                <span class="name">Orion</span>
+                <span class="status">Proibido</span>
             </div>
-            <div class="character-row">
-                <img src="Skyler.png" alt="Skyler" class="character-img">
-                <div class="character-details">
-                    <span class="character-name">Skyler</span>
-                    <span class="character-status">Proibido WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="Skyler.png" alt="Skyler">
+                <span class="name">Skyler</span>
+                <span class="status">Proibido</span>
             </div>
-            <div class="character-row">
-                <img src="A124.png" alt="A124" class="character-img">
-                <div class="character-details">
-                    <span class="character-name">A124</span>
-                    <span class="character-status">Proibido WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="A124.png" alt="A124">
+                <span class="name">A124</span>
+                <span class="status">Proibido</span>
             </div>
-            <div class="character-row">
-                <img src="Misha.png" alt="Misha" class="character-img">
-                <div class="character-details">
-                    <span class="character-name">Misha</span>
-                    <span class="character-status">Proibido WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="Misha.png" alt="Misha">
+                <span class="name">Misha</span>
+                <span class="status">Proibido</span>
             </div>
-            <!-- NOVO PERSONAGEM ADICIONADO -->
-            <div class="character-row">
-                <img src="Oscar.png" alt="Oscar" class="character-img">
-                <div class="character-details">
-                    <span class="character-name">Oscar</span>
-                    <span class="character-status">Proibido WO</span>
-                </div>
+            <div class="inventory-item">
+                <img src="Oscar.png" alt="Oscar">
+                <span class="name">Oscar</span>
+                <span class="status">Proibido</span>
             </div>
         </div>
 
@@ -1324,7 +960,7 @@
             <div class="final-rule-item">
                 <div class="final-rule-number">1</div>
                 <div class="final-rule-content">
-                    Locomoção de cavalo ou qualquer veículo é <strong>totalmente proibida</strong> durante a partida.
+                    Locomoção de cavalo ou qualquer veículo é totalmente proibida durante a partida.
                     <span class="wo-tag">WO</span>
                 </div>
             </div>
@@ -1345,7 +981,7 @@
             <div class="final-rule-item">
                 <div class="final-rule-number">4</div>
                 <div class="final-rule-content">
-                    Jogador sem replay ou com conta abaixo do <strong>nível 20</strong> não poderá participar.
+                    Jogador sem replay ou com conta abaixo do nível 20 não poderá participar.
                     <span class="wo-tag">WO</span>
                 </div>
             </div>
@@ -1359,28 +995,28 @@
             <div class="final-rule-item">
                 <div class="final-rule-number">6</div>
                 <div class="final-rule-content">
-                    Todo lança-granadas e pistola de foguete são <strong>proibidos</strong>, independente do modelo.
+                    Todo lança-granadas e pistola de foguete são proibidos, independente do modelo.
                     <span class="wo-tag">WO</span>
                 </div>
             </div>
             <div class="final-rule-item">
                 <div class="final-rule-number">7</div>
                 <div class="final-rule-content">
-                    O personagem <strong>Redemoinho</strong> é totalmente proibido.
+                    O personagem Redemoinho é totalmente proibido.
                     <span class="wo-tag">WO</span>
                 </div>
             </div>
             <div class="final-rule-item">
                 <div class="final-rule-number">8</div>
                 <div class="final-rule-content">
-                    Após a partida, é <strong>proibido sair relogado</strong> do jogo. O jogador deve permanecer conectado até a liberação da administração.
+                    Após a partida, é proibido sair relogado do jogo. O jogador deve permanecer conectado até a liberação da administração.
                     <span class="wo-tag">WO</span>
                 </div>
             </div>
             <div class="final-rule-item">
                 <div class="final-rule-number">9</div>
                 <div class="final-rule-content">
-                    Caso o ADM solicite a tela do jogador, ele terá até <strong>3 minutos</strong> para abrir o jogo e responder. Caso contrário, será punido.
+                    Caso o ADM solicite a tela do jogador, ele terá até 3 minutos para abrir o jogo e responder. Caso contrário, será punido.
                     <span class="wo-tag">WO</span>
                 </div>
             </div>
@@ -1390,7 +1026,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 LIGA FIRE DIÁRIO ONLINE. Todos os direitos reservados.</p>
+            <p>2026 LIGA FIRE DIÁRIO ONLINE. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -1403,6 +1039,35 @@
             <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
         </svg>
     </a>
+
+    <!-- SCRIPT PARA PARÂMETROS DE URL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            
+            // Função para formatar como moeda brasileira
+            const formatCurrency = (value) => {
+                return 'R$ ' + parseFloat(value).toFixed(2).replace('.', ',');
+            };
+
+            // Lê os parâmetros ou usa os valores padrão
+            const top2 = params.get('top2') || '25';
+            const top3 = params.get('top3') || '15';
+            const inscricao = params.get('inscricao') || '6';
+            const abate = params.get('abate') || '0.50';
+
+            // Atualiza os elementos na tela
+            const elTop2 = document.getElementById('val-top2');
+            const elTop3 = document.getElementById('val-top3');
+            const elInscricao = document.getElementById('val-inscricao');
+            const elAbate = document.getElementById('val-abate');
+
+            if(elTop2) elTop2.textContent = formatCurrency(top2);
+            if(elTop3) elTop3.textContent = formatCurrency(top3);
+            if(elInscricao) elInscricao.textContent = formatCurrency(inscricao);
+            if(elAbate) elAbate.textContent = formatCurrency(abate);
+        });
+    </script>
 
 </body>
 </html>
